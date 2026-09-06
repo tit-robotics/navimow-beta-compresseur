@@ -2,7 +2,7 @@
 
 # Navimow Beta Community Edition - Video Compressor
 
-Compress your videos to MP4 (under 10 MB) right on your computer, ready to
+Compress your videos to MP4 (under 20 MB) right on your computer, ready to
 share on Discord. Everything runs locally through ffmpeg - nothing is
 uploaded anywhere.
 
@@ -24,7 +24,7 @@ A setup guide (PDF, with screenshots) is attached to each release.
 ## Features
 
 - Compress one video, or several at once (batch processing)
-- Target a specific file size (up to 10 MB, the Discord free-tier limit)
+- Target a specific file size (up to 20 MB, the Discord free-tier limit)
 - Hardware-accelerated encoding when available (VideoToolbox on Mac,
 NVENC/QuickSync/AMF on Windows), with automatic fallback to software
 encoding otherwise
@@ -40,12 +40,19 @@ speed
 
 ## What's new
 
+### v2.1 (Mac)
+
+- **Higher Discord size limit** - the target size cap is now 20 MB (up
+from 10 MB), matching Discord's current free-tier upload limit.
+
 ### v2.0 (Windows)
 
 - **Feature parity with Mac v2.0** - trim a clip down to just the part you
 need (Trim start / Trim end fields and a Cut button), and choose the
 encoding speed when software encoding kicks in. Same interface as the
 Mac version.
+- **Higher Discord size limit** - the target size cap is now 20 MB (up
+from 10 MB), matching Discord's current free-tier upload limit.
 - **More reliable installer** - the desktop shortcut is now created using
 the real Desktop folder reported by Windows, so it no longer fails when
 OneDrive has redirected the Desktop (a previously common install-breaking
