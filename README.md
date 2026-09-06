@@ -32,13 +32,31 @@ encoding otherwise
 - Playback speed control (1x to 16x) to shrink long recordings further,
 with natural audio pitch preserved automatically
 - Trim a clip before compressing, so you only spend your size budget on
-the part that matters (Mac)
+the part that matters
 - Choice of encoding speed when software encoding kicks in, quality vs.
-speed (Mac)
+speed
 - Supports all common formats, including iPhone HEVC/MOV and 4K
 - Everything processed locally - no upload, no account, no tracking
 
 ## What's new
+
+### v2.0 (Windows)
+
+- **Feature parity with Mac v2.0** - trim a clip down to just the part you
+need (Trim start / Trim end fields and a Cut button), and choose the
+encoding speed when software encoding kicks in. Same interface as the
+Mac version.
+- **More reliable installer** - the desktop shortcut is now created using
+the real Desktop folder reported by Windows, so it no longer fails when
+OneDrive has redirected the Desktop (a previously common install-breaking
+error).
+- **New app icon**, used for both the built app and the desktop shortcut.
+- **Always shows the current version** - the app's local page now sends
+proper no-cache headers, so a browser that loaded an older version never
+keeps showing it after an update.
+- **Clear end-of-batch confirmation** - a "Compression complete." message
+and progress bar now appear once the whole queue is done, matching the
+Mac version.
 
 ### v2.0 (Mac)
 
