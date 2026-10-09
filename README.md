@@ -30,9 +30,12 @@ NVENC/QuickSync/AMF on Windows), with automatic fallback to software
 encoding otherwise
 - Adjustable audio bitrate, or strip audio entirely
 - Playback speed control (1x to 16x) to shrink long recordings further,
-with natural audio pitch preserved automatically
-- Trim a clip before compressing, so you only spend your size budget on
-the part that matters
+with natural audio pitch preserved automatically, including speed ramps
+on just part of a clip with an optional on-video watermark
+- Burned-in text captions at specific moments of the exported video
+- Redesigned, drag-able trim control to cut a clip down to just the part
+you need before compressing, with a live preview of speed and caption
+markers
 - Choice of encoding speed when software encoding kicks in, quality vs.
 speed
 - Supports all common formats, including iPhone HEVC/MOV and 4K
@@ -40,7 +43,43 @@ speed
 
 ## What's new
 
-### v2.1 (Mac)
+### v2.7 (Windows)
+
+- **Fixed: compression could fail with watermark, speed changes and
+captions combined** - an ffmpeg filtergraph parsing error ("Invalid
+argument") could interrupt the job; the real root cause (a Windows
+drive-letter colon in the caption font path that some ffmpeg builds
+couldn't parse) is now fixed, with an automatic fallback and clearer
+error messages as extra safety nets.
+- **Fixed: the output folder picker could hang indefinitely** - it now
+uses a more reliable dialog pattern, with a manual path entry fallback.
+- **Fixed: the installer could fail with "could not remove the previous
+dist folder (still locked)"** - it now waits for old processes to exit
+and retries before giving up.
+
+### v2.6 (Mac & Windows)
+
+- **Live preview for speed & text markers** - the preview player now
+shows exactly what a Speed or Text marker will do before you compress,
+matching the final export.
+- **Fixed: broken Discord preview on max-quality software encoding** -
+some clips encoded with "Prioritize quality" used an H.264 level that
+certain platforms, including Discord's thumbnail generator, couldn't
+parse, leaving no preview image. The software encoder now caps the
+profile/level to a broadly compatible target.
+
+### v2.5 (Mac & Windows)
+
+- **Redesigned trim control** - a single drag-able colored bar replaces
+the old two-handle slider, with a "Cut" button to preview just that
+segment.
+- **Speed ramps on part of a clip** - add one or more "Speed" markers on
+the trim timeline to slow down (down to 0.1x) or speed up (up to 8x)
+just a portion of the video, with an optional on-video watermark.
+- **Burned-in text captions** - add "Text" markers to overlay short
+captions at specific moments of the exported video.
+
+### v2.1 (Mac & Windows)
 
 - **Higher Discord size limit** - the target size cap is now 20 MB (up
 from 10 MB), matching Discord's current free-tier upload limit.
@@ -51,8 +90,6 @@ from 10 MB), matching Discord's current free-tier upload limit.
 need (Trim start / Trim end fields and a Cut button), and choose the
 encoding speed when software encoding kicks in. Same interface as the
 Mac version.
-- **Higher Discord size limit** - the target size cap is now 20 MB (up
-from 10 MB), matching Discord's current free-tier upload limit.
 - **More reliable installer** - the desktop shortcut is now created using
 the real Desktop folder reported by Windows, so it no longer fails when
 OneDrive has redirected the Desktop (a previously common install-breaking
